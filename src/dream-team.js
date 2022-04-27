@@ -15,8 +15,12 @@ const { NotImplementedError } = require('../extensions/index.js');
  */
 function createDreamTeam(members) {
   let name = ""
-  members.forEach(elem=>{
-    if(typeof elem === "string") name = name + elem[0].toUpperCase()
+  if(!Array.isArray(members)) return false
+
+  members.forEach(function(elem){
+    if(typeof elem === "string"){
+      name = name + elem.trim()[0].toUpperCase()
+    } 
   })
   return name.split('').sort().join("")
 }
